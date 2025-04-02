@@ -6,7 +6,7 @@ import requests
 app = FastAPI()
 
 def get_gpu_data():
-    url = "http://localhost:8085/data.json"
+    url = "https://d6ec-187-17-136-44.ngrok-free.app"
     try:
         resposta = requests.get(url)
         resposta.raise_for_status()
@@ -37,7 +37,7 @@ async def get():
         <pre id="gpuData">Carregando dados...</pre>
         
         <script>
-            let socket = new WebSocket("ws://localhost:8000/ws/gpu");
+            let socket = new WebSocket("wss://backend-monitoramento-gpu.onrender.com/ws/gpu");
             socket.onmessage = function(event) {
                 const gpuData = JSON.parse(event.data);
                 document.getElementById('gpuData').textContent = JSON.stringify(gpuData, null, 2);
