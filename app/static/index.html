@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de GPU</title>
+</head>
+<body>
+    <h1>Dados da GPU</h1>
+    <pre id="gpuData">Aguardando dados...</pre>
+
+    <script>
+        let socket = new WebSocket("ws://localhost:8000/ws/gpu");
+
+        socket.onmessage = function(event) {
+            const gpuData = JSON.parse(event.data);
+            document.getElementById('gpuData').textContent = JSON.stringify(gpuData, null, 2);
+            console.log("🔵 Dados da GPU recebidos:", gpuData); 
+        };
+
+        socket.onopen = function() {
+            console.log("✅ Conexão WebSocket aberta.");
+        };
+
+        socket.onerror = function(error) {
+            console.error("❌ Erro WebSocket:", error);
+        };
+    </script>
+</body>
+</html>
