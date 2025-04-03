@@ -6,7 +6,7 @@ import requests
 app = FastAPI()
 
 def get_gpu_data():
-    url = " https://f227-187-17-136-44.ngrok-free.app"
+    url = "https://7353-181-191-163-189.ngrok-free.app"
     try:
         resposta = requests.get(url)
         resposta.raise_for_status()
