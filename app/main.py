@@ -1,7 +1,7 @@
 import asyncio
 from fastapi import FastAPI, WebSocket
 from fastapi.responses import HTMLResponse
-from services import get_gpu_data
+from app.services import get_gpu_data
 
 app = FastAPI()
 
